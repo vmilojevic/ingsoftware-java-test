@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+
+    <changeSet id="1" author="milojevic.vladan96@gmail.com">
+        <createTable tableName="game">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" primaryKeyName="pk_game" nullable="false"/>
+            </column>
+            <column name="display_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="milojevic.vladan96@gmail.com">
+        <createTable tableName="achievement">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" primaryKeyName="pk_achievement" nullable="false"/>
+            </column>
+            <column name="game_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="display_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="icon" type="varchar(512)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="display_order" type="BIGINT">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created_on" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_on" type="timestamp"/>
+        </createTable>
+        
+        <addForeignKeyConstraint baseTableName="achievement"
+                                 baseColumnNames="game_id"
+                                 constraintName="fk_achievement_game"
+                                 referencedTableName="game"
+                                 referencedColumnNames="id"
+                                 onUpdate="RESTRICT"
+                                 onDelete="CASCADE"/>
+
+        <addUniqueConstraint tableName="achievement"
+                             columnNames="game_id, display_order"
+                             constraintName="uq_achievement_game_id_display_order"/>
+    </changeSet>
+    
+    <changeSet id="3" author="milojevic.vladan96@gmail.com">
+        <addUniqueConstraint tableName="achievement"
+                             columnNames="game_id, display_name"
+                             constraintName="uq_achievement_game_id_display_name"/>
+    </changeSet>
+</databaseChangeLog>

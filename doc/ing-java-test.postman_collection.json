@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "b5267420-15dd-4ee8-90d2-ed85e2e448d3",
+		"name": "ing-java-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Achievement",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"gameId\" : \"f4a78b8b-c772-4d74-a411-9d37e87977fc\",\n\t\"displayName\": \"New Achievement Display Name\",\n\t\"description\": \"Get an honorable killing blow against all Alliance races.\",\n\t\"icon\": \"https://img.icons8.com/ios-filled/72/cloud-network.png\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/achievements",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"achievements"
+					]
+				},
+				"description": "Creates an achievement"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Achievement",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/api/achievements/04562a4f-5d8b-42d4-8842-9b035e2d1dd4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"achievements",
+						"04562a4f-5d8b-42d4-8842-9b035e2d1dd4"
+					]
+				},
+				"description": "Get an achievement by id"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Achievement",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/api/achievements/7c37c236-024a-4c6f-b319-d81079d1e091",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"achievements",
+						"7c37c236-024a-4c6f-b319-d81079d1e091"
+					]
+				},
+				"description": "Delete an achievement using id"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Achievement",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"displayName\": \"Duel-icious\",\n\t\"description\": \"Win a duel\",\n\t\"icon\": \"https://img.icons8.com/ios-filled/72/cloud-network.png\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/achievements/ce4e8a43-99a0-4c97-a596-d4bf55e9f349",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"achievements",
+						"ce4e8a43-99a0-4c97-a596-d4bf55e9f349"
+					]
+				},
+				"description": "Update an achievement"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Game Achievements",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/api/achievements?gameId=f4a78b8b-c772-4d74-a411-9d37e87977fc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"achievements"
+					],
+					"query": [
+						{
+							"key": "gameId",
+							"value": "f4a78b8b-c772-4d74-a411-9d37e87977fc"
+						}
+					]
+				},
+				"description": "Get all achievements for a provided game identifier"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
